@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--no bullshit xbmc remote.-->
+<ur:Remote xmlns:ur="http://unifiedremote.com/schemas/remote.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://unifiedremote.com/schemas/remote.xsd http://unifiedremote.com/schemas/remote.xsd"
+  Name="XBMC" Icon="customXBMC.png" Author="mnett" Description="No bullshit XBMC remote">
+  <Actions>
+    <Action Name="volumeup">  
+      <ActionRef Name="Get" Target="Web">
+        <Extra Name="Url">http://localhost:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Input.ExecuteAction","params":{"action":"volumeup"},"id":1}</Extra>
+      </ActionRef>
+	</Action>
+    <Action Name="volumedown">  
+      <ActionRef Name="Get" Target="Web">
+        <Extra Name="Url">http://localhost:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Input.ExecuteAction","params":{"action":"volumedown"},"id":1}</Extra>
+      </ActionRef>
+	</Action>
+    <Action Name="standard">
+      <ActionRef Name="Kill" Target="Task">
+        <Extra Name="Process">XBMC</Extra>
+      </ActionRef>
+	  <ActionRef Name="Run" Target="Core.Task" Extra="C:\Users\hst\AppData\Roaming\Realtime Soft\UltraMon\3.1.0\Profiles\Standard.umprofile"/>
+      <ActionRef Name="Wait" Target="Util">
+        <Extra Name="Time">1000</Extra>
+      </ActionRef>
+    </Action>
+    <Action Name="startXBMC">
+	  <ActionRef Name="Run" Target="Core.Task" Extra="C:\Users\hst\AppData\Roaming\Realtime Soft\UltraMon\3.1.0\Profiles\TV.umprofile"/>
+      <ActionRef Name="Wait" Target="Util">
+        <Extra Name="Time">1000</Extra>
+      </ActionRef>
+      <ActionRef Name="Run" Target="Core.Task" Extra="%programfiles(x86)%\XBMC\XBMC.exe"/>
+    </Action>
+    <Action Name="startSTEAM">
+      <ActionRef Name="Kill" Target="Task">
+        <Extra Name="Process">XBMC</Extra>
+      </ActionRef>
+      <ActionRef Name="Wait" Target="Util">
+        <Extra Name="Time">1000</Extra>
+      </ActionRef>
+	  <ActionRef Name="Run" Target="Core.Task" Extra="C:\Users\hst\AppData\Roaming\Realtime Soft\UltraMon\3.1.0\Profiles\TV_only.umprofile"/>
+      <ActionRef Name="Wait" Target="Util">
+        <Extra Name="Time">1000</Extra>
+      </ActionRef>
+	  <ActionRef Name="Run" Target="Core.Task" Extra="E:\Programme\Steam\Steam.exe"/>
+      <ActionRef Name="SwitchTo" Target="Task">
+         <Extra Name="Process">Steam</Extra>
+      </ActionRef>
+      <ActionRef Name="Wait" Target="Util">
+        <Extra Name="Time">1000</Extra>
+      </ActionRef>
+      <ActionRef Name="KeyDown" Target="Input" Extra="MENU" />
+	  <ActionRef Name="Press" Target="Input" Extra="RETURN" />
+      <ActionRef Name="KeyUp" Target="Input" Extra="MENU" />
+    </Action>
+    <Action Name="rewind">
+      <ActionRef Name="Get" Target="Web">
+        <Extra Name="Url">http://localhost:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Input.ExecuteAction","params":{"action":"rewind"},"id":1}</Extra>
+      </ActionRef>
+    </Action>
+    <Action Name="play">
+      <ActionRef Name="Get" Target="Web">
+        <Extra Name="Url">http://localhost:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Input.ExecuteAction","params":{"action":"play"},"id":1}</Extra>
+      </ActionRef>
+    </Action>
+    <Action Name="forward">
+      <ActionRef Name="Get" Target="Web">
+        <Extra Name="Url">http://localhost:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Input.ExecuteAction","params":{"action":"fastforward"},"id":1}</Extra>
+      </ActionRef>
+    </Action>
+    <Action Name="previous">
+      <ActionRef Name="Get" Target="Web">
+        <Extra Name="Url">http://localhost:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Input.ExecuteAction","params":{"action":"skipprevious"},"id":1}</Extra>
+      </ActionRef>
+    </Action>
+    <Action Name="stop">
+      <ActionRef Name="Get" Target="Web">
+        <Extra Name="Url">http://localhost:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Input.ExecuteAction","params":{"action":"stop"},"id":1}</Extra>
+      </ActionRef>
+    </Action>
+    <Action Name="pause">
+      <ActionRef Name="Get" Target="Web">
+        <Extra Name="Url">http://localhost:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Input.ExecuteAction","params":{"action":"playpause"},"id":1}</Extra>
+      </ActionRef>
+    </Action>
+    <Action Name="next">
+      <ActionRef Name="Get" Target="Web">
+        <Extra Name="Url">http://localhost:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Input.ExecuteAction","params":{"action":"skipnext"},"id":1}</Extra>
+      </ActionRef>
+    </Action>
+    <Action Name="title">
+      <ActionRef Name="Get" Target="Web">
+        <Extra Name="Url">http://localhost:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Input.ExecuteAction","params":{"action":"contextmenu"},"id":1}</Extra>
+      </ActionRef>
+      <ActionRef Name="Get" Target="Web">
+        <Extra Name="Url">http://localhost:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Input.ExecuteAction","params":{"action":"codecinfo"},"id":1}</Extra>
+      </ActionRef>
+    </Action>
+    <Action Name="up">
+      <ActionRef Name="Get" Target="Web">
+        <Extra Name="Url">http://localhost:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Input.ExecuteAction","params":{"action":"up"},"id":1}</Extra>
+      </ActionRef>
+      <ActionRef Name="Get" Target="Web">
+		<Extra Name="Url">http://localhost:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Input.ExecuteAction","params":{"action":"bigstepforward"},"id":1}</Extra>
+      </ActionRef>
+    </Action>
+    <Action Name="info">
+      <ActionRef Name="Get" Target="Web">
+        <Extra Name="Url">http://localhost:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Input.ExecuteAction","params":{"action":"info"},"id":1}</Extra>
+      </ActionRef>
+    </Action>
+    <Action Name="left">
+      <ActionRef Name="Get" Target="Web">
+        <Extra Name="Url">http://localhost:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Input.ExecuteAction","params":{"action":"left"},"id":1}</Extra>
+      </ActionRef>
+      <ActionRef Name="Get" Target="Web">
+		<Extra Name="Url">http://localhost:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Input.ExecuteAction","params":{"action":"stepback"},"id":1}</Extra>
+      </ActionRef>
+    </Action>
+    <Action Name="select">
+      <ActionRef Name="Get" Target="Web">
+        <Extra Name="Url">http://localhost:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Input.ExecuteAction","params":{"action":"select"},"id":1}</Extra>
+      </ActionRef>
+    </Action>
+    <Action Name="right">
+      <ActionRef Name="Get" Target="Web">
+        <Extra Name="Url">http://localhost:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Input.ExecuteAction","params":{"action":"right"},"id":1}</Extra>
+      </ActionRef>
+      <ActionRef Name="Get" Target="Web">
+		<Extra Name="Url">http://localhost:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Input.ExecuteAction","params":{"action":"stepforward"},"id":1}</Extra>
+      </ActionRef>
+    </Action>
+    <Action Name="osd">
+      <ActionRef Name="Get" Target="Web">
+        <Extra Name="Url">http://localhost:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Input.ExecuteAction","params":{"action":"osd"},"id":1}</Extra>
+      </ActionRef>
+    </Action>
+    <Action Name="down">
+      <ActionRef Name="Get" Target="Web">
+        <Extra Name="Url">http://localhost:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Input.ExecuteAction","params":{"action":"down"},"id":1}</Extra>
+      </ActionRef>
+      <ActionRef Name="Get" Target="Web">
+        <Extra Name="Url">http://localhost:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Input.ExecuteAction","params":{"action":"bigstepback"},"id":1}</Extra>
+      </ActionRef>
+    </Action>
+    <Action Name="back">
+      <ActionRef Name="Get" Target="Web">
+        <Extra Name="Url">http://localhost:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Input.ExecuteAction","params":{"action":"back"},"id":1}</Extra>
+      </ActionRef>
+    </Action>
+  </Actions>
+  <Layout OnVolumeUp="volumeup" OnVolumeDown="volumedown" Scroll="none">
+    <Row>
+      <Control Type="Orb" OnClick="standard" Text="Standard"/>
+      <Control Type="Orb" OnClick="startXBMC" Text="XBMC"/>
+      <Control Type="Orb" OnClick="startSTEAM" Text="Steam"/>
+    </Row>
+    <Row>
+      <Control Type="Orb" OnClick="rewind" Icon="RWD"/>
+      <Control Type="Orb" OnClick="play" Icon="PLAY"/>
+      <Control Type="Orb" OnClick="forward" Icon="FF"/>
+    </Row>
+    <Row>
+      <Control Type="Orb" OnClick="previous" Icon="PREVIOUS"/>
+      <Control Type="Orb" OnClick="stop" Icon="STOP"/>
+	  <Control Type="Orb" OnClick="pause" Icon="PAUSE"/>
+      <Control Type="Orb" OnClick="next" Icon="NEXT"/>
+    </Row>
+    <Row>
+      <Control Type="Orb" OnClick="title" Text="Title"/>
+      <Control Type="Orb" OnClick="up" Icon="UP"/>
+      <Control Type="Orb" OnClick="info" Text="Info"/>
+    </Row>
+    <Row>
+      <Control Type="Orb" OnClick="left" Icon="LEFT"/>
+      <Control Type="Orb" OnClick="select" Icon="SELECT"/>
+      <Control Type="Orb" OnClick="right" Icon="RIGHT"/>
+    </Row>
+    <Row>      
+	  <Control Type="Orb" OnClick="osd" Icon="WINDOW" />
+      <Control Type="Orb" OnClick="down" Icon="DOWN" />
+      <Control Type="Orb" OnClick="back" Icon="BACK1" />
+    </Row>
+  </Layout>
+</ur:Remote>
